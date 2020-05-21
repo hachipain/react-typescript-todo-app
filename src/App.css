@@ -181,3 +181,23 @@
   opacity: 0.3;
   transition: opacity 700ms;
 }
+
+/* Task List Fade */
+.fade-enter-active {
+  background-color: #fff8b0;
+  transition: background-color 300ms;
+}
+.fade-enter-done {
+  transition: background-color 1s;
+}
+.fade-exit {
+  background-color: #ffacbf;
+}
+.fade-exit-active {
+  background-color: transparent;
+  transition: background-color 700ms;
+}
+.fade-exit-active label {
+  opacity: 0.3;
+  transition: opacity 700ms;
+}

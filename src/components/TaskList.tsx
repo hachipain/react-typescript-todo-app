@@ -1,6 +1,7 @@
 import React from "react";
 import TaskItem from "./TaskItem";
 import { Task } from "../Type";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 type Props = {
   tasks: Task[];
@@ -23,16 +24,26 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
       {tasks.length <= 0 ? (
         "登録されたTODOはありません"
       ) : (
-        <ul className="task-list">
+        <TransitionGroup component="ul" className="task-list">
+          {/* <ul className="task-list"> */}
           {tasks.map((task) => (
-            <TaskItem
+            <CSSTransition
               key={task.id}
-              task={task}
-              handleDone={handleDone}
-              handleDelete={handleDelete}
-            />
+              timeout={{
+                enter: 300,
+                exit: 700,
+              }}
+              classNames="fade"
+            >
+              <TaskItem
+                task={task}
+                handleDone={handleDone}
+                handleDelete={handleDelete}
+              />
+            </CSSTransition>
           ))}
-        </ul>
+          {/* </ul> */}
+        </TransitionGroup>
       )}
     </div>
   );
